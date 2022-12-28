@@ -1,1 +1,6 @@
 /docker/mysql/*
+.idea/modules.xml
+.idea/php.xml
+.idea/proethos2.iml
+.idea/workspace.xml
+.idea/encodings.xml
