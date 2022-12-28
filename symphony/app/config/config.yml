@@ -24,7 +24,7 @@ framework:
         # handler_id set to null will use default session handler from php.ini
         handler_id: session.handler.native_file
         save_path: '%kernel.root_dir%/sessions'
-        cookie_secure: true
+        cookie_secure: false
         cookie_httponly: true
         cookie_lifetime: 0     # cookie is destroyed when the browser is closed
         gc_divisor: 100        # garbage collector process on each request (100/100)
@@ -93,7 +93,7 @@ swiftmailer:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     $(pwd)/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
         options:    []
 
 parameters:
