@@ -21,7 +21,7 @@
                     <li role="presentation">
                         <a href="javascript:void(0)" title="{% trans %}About Project{% endtrans %}">{% trans %}About Project{% endtrans %}</a>
                     </li>
-                    <li role="presentation"><a href="javascript:void(0)">{% trans %}Study Information{% endtrans %}</a></li>
+                    <li role="presentation"><a href="javascript:void(0)">{% trans %}Methodology{% endtrans %}</a></li>
                     <li role="presentation"><a href="javascript:void(0)">{% trans %}Additional Information{% endtrans %}</a></li>
                     <li role="presentation"><a href="javascript:void(0)">{% trans %}Bibliography{% endtrans %}</a></li>
                     <li role="presentation"><a href="javascript:void(0)">{% trans %}Attached Files{% endtrans %}</a></li>
@@ -41,24 +41,25 @@
 
                         <div id="anchor-select-language"></div>
 
-                        <fieldset>
-                            <legend>{% trans %}Language{% endtrans %}</legend>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <div class="form-group required">
-                                        <label for="select-language">{% trans %}Submission Language{% endtrans %}:</label>
-                                        <a href="{{ path("crud_admin_help_show", {help_id: 198} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                        <select class='form-control select2' id='select-language' name='language'>
-                                            <option value="">-</option>
-                                            <option value="pt_BR" {% if app.request.locale == 'pt_BR' %}selected{% endif %}>Português</option>
-                                            <option value="es_ES" {% if app.request.locale == 'es_ES' %}selected{% endif %}>Español</option>
-                                            <option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>English</option>
-                                            <option value="fr_FR" {% if app.request.locale == 'fr_FR' %}selected{% endif %}>Français</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
+                        {#<fieldset>#}
+                            {#<legend>{% trans %}Language{% endtrans %}</legend>#}
+                            {#<div class='row'>#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="form-group required">#}
+                                        {#<label for="select-language">{% trans %}Submission Language{% endtrans %}:</label>#}
+                                        {#<a href="{{ path("crud_admin_help_show", {help_id: 198} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>#}
+                                        {#<select class='form-control select2' id='select-language' name='language'>#}
+                                            {#<option value="">-</option>#}
+                                            {#<option value="pt_BR" {% if app.request.locale == 'pt_BR' %}selected{% endif %}>Português</option>#}
+                                            {#<option value="es_ES" {% if app.request.locale == 'es_ES' %}selected{% endif %}>Español</option>#}
+                                            {#<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>English</option>#}
+                                            {#<option value="fr_FR" {% if app.request.locale == 'fr_FR' %}selected{% endif %}>Français</option>#}
+                                        {#</select>#}
+                                        <input type="hidden" name='language' id='select-language' value="en" />
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</fieldset>#}
 
                         <fieldset>
                             <legend>{% trans %}Clinical Trial{% endtrans %}</legend>
