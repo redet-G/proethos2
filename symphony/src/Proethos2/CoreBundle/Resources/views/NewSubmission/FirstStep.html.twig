@@ -169,13 +169,13 @@
                     return false;
                 }
 
-                if ( !$('#input_public_title').val() ) {
-                    // cancel submit
-                    e.preventDefault();
-                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
-                    highlight_input_field('#input_public_title');
-                    return false;
-                }
+                {#if ( !$('#input_public_title').val() ) {#}
+                    {#// cancel submit#}
+                    {#e.preventDefault();#}
+                    {#alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');#}
+                    {#highlight_input_field('#input_public_title');#}
+                    {#return false;#}
+                {#}#}
             });
         });
     </script>
