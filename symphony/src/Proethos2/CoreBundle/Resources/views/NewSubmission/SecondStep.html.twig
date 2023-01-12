@@ -157,22 +157,54 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label for="textarea-introduction">{% trans %}Introduction{% endtrans %}:</label>
+                                <label for="textarea-introduction">{% trans %}Background{% endtrans %}:</label>
                                 <a href="{{ path("crud_admin_help_show", {help_id: 3} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="6" class="form-control summernote" name='introduction' id='textarea-introduction'>{{ submission.introduction }}</textarea>
                             </div>
                         </div>
                     </div>
 
+                    <div id="anchor-textarea-problem-statement"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-problem-statement">{% trans %}Statement of the Problem{% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 4} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="3" class="form-control summernote" name='problem_statement' id='textarea-problem-statement'>{{ submission.problemStatement }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="anchor-literature-review"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="textarea-literature_review">{% trans %}Literature Review{% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 4} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="3" class="form-control summernote" name='literature_review' id='textarea-literature-review'>{{ submission.literatureReview }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div id="anchor-textarea-justify"></div>
 
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label for="textarea-justify">{% trans %}Justify{% endtrans %}:</label>
+                                <label for="textarea-justify">{% trans %}Justification{% endtrans %}:</label>
                                 <a href="{{ path("crud_admin_help_show", {help_id: 4} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="3" class="form-control summernote" name='justify' id='textarea-justify'>{{ submission.justification }}</textarea>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>{% trans %}Objectives{% endtrans %}</h2>
                         </div>
                     </div>
 
@@ -181,9 +213,20 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label for="textarea-goals">{% trans %}Objectives{% endtrans %}:</label>
+                                <label for="textarea-goals">{% trans %}General Objective{% endtrans %}:</label>
                                 <a href="{{ path("crud_admin_help_show", {help_id: 5} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="3" class="form-control summernote" name='goals' id='textarea-goals'>{{ submission.goals }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="anchor-textarea-specific-objective"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-specific-objective">{% trans %}Specific Objectives{% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 5} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="3" class="form-control summernote" name='specific_objective' id='textarea-specific-objective'> {{ submission.specificObjective }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -479,11 +522,26 @@
                         return false;
                     }
 
+                    if ( $('#textarea-problem-statement').summernote('isEmpty') ) {
+                        // cancel submit
+                        e.preventDefault();
+                        alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                        highlight_input_field('#textarea-problem-statement', 'sn');
+                        return false;
+                    }
+
                     if ( $('#textarea-goals').summernote('isEmpty') ) {
                         // cancel submit
                         e.preventDefault();
                         alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
                         highlight_input_field('#textarea-goals', 'sn');
+                        return false;
+                    }
+                    if ( $('#textarea-specific-objective').summernote('isEmpty') ) {
+                        // cancel submit
+                        e.preventDefault();
+                        alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                        highlight_input_field('#textarea-specific-objective', 'sn');
                         return false;
                     }
                 });

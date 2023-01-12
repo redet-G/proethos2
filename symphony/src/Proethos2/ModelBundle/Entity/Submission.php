@@ -190,7 +190,22 @@ class Submission extends Base
      *
      * @ORM\Column(type="text", nullable=true)
      */
+    private $problem_statement;
+
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $justification;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $literature_review;
 
     /**
      * @var text
@@ -204,7 +219,95 @@ class Submission extends Base
      *
      * @ORM\Column(type="text", nullable=true)
      */
+    private $specific_objective;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $study_design;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $study_subject;
+
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $study_population;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $source_population;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sample_size_calculation;
+
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sampling_techniques;
+
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sampling_procedures;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $operational_definitions;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $data_quality_assurance;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $data_collection_tools;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $data_collection_procedure;
+
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $research_area_and_period;
 
     /**
      * @var text
@@ -795,6 +898,21 @@ class Submission extends Base
 
         return $this;
     }
+
+    /**
+     * Set specific objective
+     *
+     * @param $specific_objective
+     * @return Submission
+     */
+
+    public function setSpecificObjective($specific_objective)
+    {
+        $this->specific_objective = $specific_objective;
+
+        return $this;
+    }
+
 
     /**
      * Get goals
@@ -1867,5 +1985,328 @@ class Submission extends Base
     public function getLimitations()
     {
         return $this->limitations;
+    }
+
+    /**
+     * Get specificObjective
+     *
+     * @return string
+     */
+    public function getSpecificObjective()
+    {
+        return $this->specific_objective;
+    }
+
+    /**
+     * Set problemStatement
+     *
+     * @param string $problemStatement
+     *
+     * @return Submission
+     */
+    public function setProblemStatement($problemStatement)
+    {
+        $this->problem_statement = $problemStatement;
+
+        return $this;
+    }
+
+    /**
+     * Get problemStatement
+     *
+     * @return string
+     */
+    public function getProblemStatement()
+    {
+        return $this->problem_statement;
+    }
+
+
+    /**
+     * Set literatureReview
+     *
+     * @param string $literatureReview
+     *
+     * @return Submission
+     */
+    public function setLiteratureReview($literatureReview)
+    {
+        $this->literature_review = $literatureReview;
+
+        return $this;
+    }
+
+    /**
+     * Get literatureReview
+     *
+     * @return string
+     */
+    public function getLiteratureReview()
+    {
+        return $this->literature_review;
+    }
+
+    /**
+     * Set studySubject
+     *
+     * @param string $studySubject
+     *
+     * @return Submission
+     */
+    public function setStudySubject($studySubject)
+    {
+        $this->study_subject = $studySubject;
+
+        return $this;
+    }
+
+    /**
+     * Get studySubject
+     *
+     * @return string
+     */
+    public function getStudySubject()
+    {
+        return $this->study_subject;
+    }
+
+    /**
+     * Set studyPopulation
+     *
+     * @param string $studyPopulation
+     *
+     * @return Submission
+     */
+    public function setStudyPopulation($studyPopulation)
+    {
+        $this->study_population = $studyPopulation;
+
+        return $this;
+    }
+
+    /**
+     * Get studyPopulation
+     *
+     * @return string
+     */
+    public function getStudyPopulation()
+    {
+        return $this->study_population;
+    }
+
+    /**
+     * Set sourcePopulation
+     *
+     * @param string $sourcePopulation
+     *
+     * @return Submission
+     */
+    public function setSourcePopulation($sourcePopulation)
+    {
+        $this->source_population = $sourcePopulation;
+
+        return $this;
+    }
+
+    /**
+     * Get sourcePopulation
+     *
+     * @return string
+     */
+    public function getSourcePopulation()
+    {
+        return $this->source_population;
+    }
+
+    /**
+     * Set sampleSizeCalculation
+     *
+     * @param string $sampleSizeCalculation
+     *
+     * @return Submission
+     */
+    public function setSampleSizeCalculation($sampleSizeCalculation)
+    {
+        $this->sample_size_calculation = $sampleSizeCalculation;
+
+        return $this;
+    }
+
+    /**
+     * Get sampleSizeCalculation
+     *
+     * @return string
+     */
+    public function getSampleSizeCalculation()
+    {
+        return $this->sample_size_calculation;
+    }
+
+    /**
+     * Set samplingTechniques
+     *
+     * @param string $samplingTechniques
+     *
+     * @return Submission
+     */
+    public function setSamplingTechniques($samplingTechniques)
+    {
+        $this->sampling_techniques = $samplingTechniques;
+
+        return $this;
+    }
+
+    /**
+     * Get samplingTechniques
+     *
+     * @return string
+     */
+    public function getSamplingTechniques()
+    {
+        return $this->sampling_techniques;
+    }
+
+    /**
+     * Set samplingProcedures
+     *
+     * @param string $samplingProcedures
+     *
+     * @return Submission
+     */
+    public function setSamplingProcedures($samplingProcedures)
+    {
+        $this->sampling_procedures = $samplingProcedures;
+
+        return $this;
+    }
+
+    /**
+     * Get samplingProcedures
+     *
+     * @return string
+     */
+    public function getSamplingProcedures()
+    {
+        return $this->sampling_procedures;
+    }
+
+    /**
+     * Set operationalDefinitions
+     *
+     * @param string $operationalDefinitions
+     *
+     * @return Submission
+     */
+    public function setOperationalDefinitions($operationalDefinitions)
+    {
+        $this->operational_definitions = $operationalDefinitions;
+
+        return $this;
+    }
+
+    /**
+     * Get operationalDefinitions
+     *
+     * @return string
+     */
+    public function getOperationalDefinitions()
+    {
+        return $this->operational_definitions;
+    }
+
+    /**
+     * Set dataQualityAssurance
+     *
+     * @param string $dataQualityAssurance
+     *
+     * @return Submission
+     */
+    public function setDataQualityAssurance($dataQualityAssurance)
+    {
+        $this->data_quality_assurance = $dataQualityAssurance;
+
+        return $this;
+    }
+
+    /**
+     * Get dataQualityAssurance
+     *
+     * @return string
+     */
+    public function getDataQualityAssurance()
+    {
+        return $this->data_quality_assurance;
+    }
+
+    /**
+     * Set dataCollectionTools
+     *
+     * @param string $dataCollectionTools
+     *
+     * @return Submission
+     */
+    public function setDataCollectionTools($dataCollectionTools)
+    {
+        $this->data_collection_tools = $dataCollectionTools;
+
+        return $this;
+    }
+
+    /**
+     * Get dataCollectionTools
+     *
+     * @return string
+     */
+    public function getDataCollectionTools()
+    {
+        return $this->data_collection_tools;
+    }
+
+    /**
+     * Set dataCollectionProcedure
+     *
+     * @param string $dataCollectionProcedure
+     *
+     * @return Submission
+     */
+    public function setDataCollectionProcedure($dataCollectionProcedure)
+    {
+        $this->data_collection_procedure = $dataCollectionProcedure;
+
+        return $this;
+    }
+
+    /**
+     * Get dataCollectionProcedure
+     *
+     * @return string
+     */
+    public function getDataCollectionProcedure()
+    {
+        return $this->data_collection_procedure;
+    }
+
+    /**
+     * Set researchAreaAndPeriod
+     *
+     * @param string $researchAreaAndPeriod
+     *
+     * @return Submission
+     */
+    public function setResearchAreaAndPeriod($researchAreaAndPeriod)
+    {
+        $this->research_area_and_period = $researchAreaAndPeriod;
+
+        return $this;
+    }
+
+    /**
+     * Get researchAreaAndPeriod
+     *
+     * @return string
+     */
+    public function getResearchAreaAndPeriod()
+    {
+        return $this->research_area_and_period;
     }
 }

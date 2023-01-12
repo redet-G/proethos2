@@ -23,24 +23,25 @@
 
                         <div id="anchor-select-language"></div>
 
-                        <fieldset>
-                            <legend>{% trans %}Language{% endtrans %}</legend>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <div class="form-group required">
-                                        <label for="select-language">{% trans %}Submission Language{% endtrans %}:</label>
-                                        <a href="{{ path("crud_admin_help_show", {help_id: 198} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                        <select class='form-control select2' id='select-language' name='language'>
-                                            <option value="">-</option>
-                                            <option value="pt_BR" {% if submission.language == 'pt_BR' %}selected{% endif %}>Português</option>
-                                            <option value="es_ES" {% if submission.language == 'es_ES' %}selected{% endif %}>Español</option>
-                                            <option value="en" {% if submission.language == 'en' %}selected{% endif %}>English</option>
-                                            <option value="fr_FR" {% if submission.language == 'fr_FR' %}selected{% endif %}>Français</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
+                        {#<fieldset>#}
+                            {#<legend>{% trans %}Language{% endtrans %}</legend>#}
+                            {#<div class='row'>#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="form-group required">#}
+                                        {#<label for="select-language">{% trans %}Submission Language{% endtrans %}:</label>#}
+                                        {#<a href="{{ path("crud_admin_help_show", {help_id: 198} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>#}
+                                        {#<select class='form-control select2' id='select-language' name='language'>#}
+                                            {#<option value="">-</option>#}
+                                            {#<option value="pt_BR" {% if submission.language == 'pt_BR' %}selected{% endif %}>Português</option>#}
+                                            {#<option value="es_ES" {% if submission.language == 'es_ES' %}selected{% endif %}>Español</option>#}
+                                            {#<option value="en" {% if submission.language == 'en' %}selected{% endif %}>English</option>#}
+                                            {#<option value="fr_FR" {% if submission.language == 'fr_FR' %}selected{% endif %}>Français</option>#}
+                                        {#</select>#}
+                                        <input type="hidden" name='language' id='select-language' value="en" />
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</fieldset>#}
 
                         <fieldset>
                             <legend>{% trans %}Clinical Trial{% endtrans %}</legend>
@@ -91,33 +92,33 @@
 
                         <fieldset>
                             <legend>{% trans %}Project Title{% endtrans %}</legend>
+                            {#<div class='row'>#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="form-group required">#}
+                                        {#<label for="input_scientific_title">{% trans %}Scientific Title{% endtrans %}:</label>#}
+                                        {#<a href="{{ path("crud_admin_help_show", {help_id: 14} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>#}
+                                        {#<input type="text" class="form-control" name='scientific_title' id='input_scientific_title' value="{{ submission.scientificTitle }}">#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
                             <div class='row'>
                                 <div class="col-md-12">
                                     <div class="form-group required">
-                                        <label for="input_scientific_title">{% trans %}Scientific Title{% endtrans %}:</label>
-                                        <a href="{{ path("crud_admin_help_show", {help_id: 14} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                        <input type="text" class="form-control" name='scientific_title' id='input_scientific_title' value="{{ submission.scientificTitle }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <div class="form-group required">
-                                        <label for="input_public_title">{% trans %}Public title{% endtrans %}:</label>
+                                        <label for="input_public_title">{% trans %}Research title{% endtrans %}:</label>
                                         <a href="{{ path("crud_admin_help_show", {help_id: 15} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                         <input type="text" class="form-control" name='public_title' id='input_public_title' value="{{ submission.publicTitle }}">
                                     </div>
                                 </div>
                             </div>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="input_title_acronym">{% trans %}Title Acronym{% endtrans %}:</label>
-                                        <a href="{{ path("crud_admin_help_show", {help_id: 16} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                        <input type="text" class="form-control" name='title_acronym' value="{{ submission.titleAcronym }}" id='input_title_acronym'>
-                                    </div>
-                                </div>
-                            </div>
+                            {#<div class='row'>#}
+                                {#<div class="col-md-12">#}
+                                    {#<div class="form-group">#}
+                                        {#<label for="input_title_acronym">{% trans %}Title Acronym{% endtrans %}:</label>#}
+                                        {#<a href="{{ path("crud_admin_help_show", {help_id: 16} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>#}
+                                        {#<input type="text" class="form-control" name='title_acronym' value="{{ submission.titleAcronym }}" id='input_title_acronym'>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
                         </fieldset>
 
                         <div class='submission-button-controls'>
@@ -142,13 +143,13 @@
                     return false;
                 }
 
-                if ( !$('#input_scientific_title').val() ) {
-                    // cancel submit
-                    e.preventDefault();
-                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
-                    highlight_input_field('#input_scientific_title');
-                    return false;
-                }
+                {#if ( !$('#input_scientific_title').val() ) {#}
+                    {#// cancel submit#}
+                    {#e.preventDefault();#}
+                    {#alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');#}
+                    {#highlight_input_field('#input_scientific_title');#}
+                    {#return false;#}
+                {#}#}
 
                 if ( !$('#input_public_title').val() ) {
                     // cancel submit

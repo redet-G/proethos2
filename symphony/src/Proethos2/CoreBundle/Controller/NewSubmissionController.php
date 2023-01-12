@@ -85,7 +85,7 @@ class NewSubmissionController extends Controller
             $post_data = $request->request->all();
 
             // checking required files
-            foreach(array('scientific_title', 'public_title', 'is_clinical_trial', 'is_consultation', 'language') as $field) {
+            foreach(array('public_title', 'is_clinical_trial', 'is_consultation', 'language') as $field) {
                 if(!isset($post_data[$field]) or empty($post_data[$field])) {
                     $session->getFlashBag()->add('error', $translator->trans("Field '%field%' is required.", array("%field%" => $field)));
                     return array();
@@ -103,8 +103,9 @@ class NewSubmissionController extends Controller
             $submission->setIsConsultation(($post_data['is_consultation'] == 'yes') ? true : false);
             $submission->setIsSubstudy(($post_data['is_substudy'] == 'yes') ? true : false);
             $submission->setPublicTitle($post_data['public_title']);
-            $submission->setScientificTitle($post_data['scientific_title']);
-            $submission->setTitleAcronym($post_data['title_acronym']);
+            $submission->setScientificTitle('-');
+//            $submission->setTitleAcronym($post_data['title_acronym']);
+            $submission->setTitleAcronym('--');
             $submission->setLanguage($post_data['language']);
             $submission->setProtocol($protocol);
             $submission->setNumber(1);
@@ -167,7 +168,7 @@ class NewSubmissionController extends Controller
             $post_data = $request->request->all();
 
             // checking required files
-            foreach(array('scientific_title', 'public_title', 'is_clinical_trial', 'is_consultation', 'language') as $field) {
+            foreach(array('public_title', 'is_clinical_trial', 'is_consultation', 'language') as $field) {
                 if(!isset($post_data[$field]) or empty($post_data[$field])) {
                     $session->getFlashBag()->add('error', $translator->trans("Field '%field%' is required.", array("%field%" => $field)));
                     return $output;
@@ -178,8 +179,8 @@ class NewSubmissionController extends Controller
             $submission->setIsConsultation(($post_data['is_consultation'] == 'yes') ? true : false);
             $submission->setIsSubstudy(($post_data['is_substudy'] == 'yes') ? true : false);
             $submission->setPublicTitle($post_data['public_title']);
-            $submission->setScientificTitle($post_data['scientific_title']);
-            $submission->setTitleAcronym($post_data['title_acronym']);
+            $submission->setScientificTitle("-");
+            $submission->setTitleAcronym("-");
             $submission->setLanguage($post_data['language']);
 
             $em->persist($submission);
@@ -450,7 +451,7 @@ class NewSubmissionController extends Controller
             }
 
             // checking required files
-            $required_fields = array('abstract', 'keywords', 'introduction', 'justify', 'goals');
+            $required_fields = array('abstract', 'keywords', 'introduction', 'justify', 'goals', 'specific_objective');
             foreach($required_fields as $field) {
                 if(!isset($post_data[$field]) or empty($post_data[$field])) {
                     $session->getFlashBag()->add('error', $translator->trans("Field '%field%' is required.", array("%field%" => $field)));
@@ -464,6 +465,9 @@ class NewSubmissionController extends Controller
             $submission->setIntroduction($post_data['introduction']);
             $submission->setJustification($post_data['justify']);
             $submission->setGoals($post_data['goals']);
+            $submission->setSpecificObjective($post_data['specific_objective']);
+            $submission->setProblemStatement($post_data['problem_statement']);
+            $submission->setLiteratureReview($post_data['literature_review']);
 
             $em->persist($submission);
             $em->flush();
@@ -702,6 +706,7 @@ class NewSubmissionController extends Controller
 
                     // adding fields to model
                     $submission->setStudyDesign($post_data['study-design']);
+                    $submission->setStudySubject($post_data['study-subject']);
                     $submission->setHealthCondition($post_data['health-condition']);
                     $submission->setInterventions($post_data['interventions']);
                     $submission->setPrimaryOutcome($post_data['primary-outcome']);
@@ -724,7 +729,7 @@ class NewSubmissionController extends Controller
             }
 
             // checking required files
-            $required_fields = array('study-design', 'interventions', 'primary-outcome');
+            $required_fields = array('study-design','research-area-and-period', 'interventions', 'primary-outcome');
             
             if(!$submission->getIsTranslation() && 'no' == $post_data['is_multiple_clinical_study']) {
                 $required_fields[] = 'gender';
@@ -816,6 +821,18 @@ class NewSubmissionController extends Controller
 
             // adding fields to model
             $submission->setStudyDesign($post_data['study-design']);
+            $submission->setStudySubject($post_data['study-subject']);
+            $submission->setSampleSizeCalculation($post_data['sample-size-calculation']);
+            $submission->setSamplingTechniques($post_data['sampling-techniques']);
+            $submission->setSamplingProcedures($post_data['sampling-procedures']);
+            $submission->setSourcePopulation($post_data['source-population']);
+            $submission->setStudyPopulation($post_data['study-population']);
+            $submission->setOperationalDefinitions($post_data['operational-definitions']);
+            $submission->setDataQualityAssurance($post_data['data-quality-assurance']);
+            $submission->setDataCollectionTools($post_data['data-collection-tools']);
+            $submission->setDataCollectionProcedure($post_data['data-collection-procedure']);
+            $submission->setResearchAreaAndPeriod($post_data['research-area-and-period']);
+
             $submission->setHealthCondition($post_data['health-condition']);
             $submission->setSampleSizeJustify($post_data['sample-size-justify']);
             $submission->setInclusionCriteria($post_data['inclusion-criteria']);
@@ -1414,7 +1431,7 @@ class NewSubmissionController extends Controller
         }
         $revisions[] = $item;
 
-        $text = $translator->trans('Introduction');
+        $text = $translator->trans('Background');
         $item = array('text' => $text, 'status' => true);
         if(empty($submission->getIntroduction())) {
             $item = array('text' => $text, 'status' => false);
@@ -1430,9 +1447,25 @@ class NewSubmissionController extends Controller
         }
         $revisions[] = $item;
 
-        $text = $translator->trans('Goals');
+        $text = $translator->trans('Statement of the Problem');
+        $item = array('text' => $text, 'status' => true);
+        if(empty($submission->getProblemStatement())) {
+            $item = array('text' => $text, 'status' => false);
+            $final_status = false;
+        }
+        $revisions[] = $item;
+
+        $text = $translator->trans('General Objective');
         $item = array('text' => $text, 'status' => true);
         if(empty($submission->getGoals())) {
+            $item = array('text' => $text, 'status' => false);
+            $final_status = false;
+        }
+        $revisions[] = $item;
+
+        $text = $translator->trans('Specific Objective');
+        $item = array('text' => $text, 'status' => true);
+        if(empty($submission->getSpecificObjective())) {
             $item = array('text' => $text, 'status' => false);
             $final_status = false;
         }
@@ -1447,6 +1480,65 @@ class NewSubmissionController extends Controller
                 $final_status = false;
             }
             $revisions[] = $item;
+
+            $text = $translator->trans('Research Area and Period');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getResearchAreaAndPeriod())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Study Subject');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getStudySubject())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Source Population');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getSourcePopulation())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Study Population');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getStudyPopulation())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Sample Size Calculations');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getSampleSizeCalculation())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Sampling Techniques');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getSamplingTechniques())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+
+            $text = $translator->trans('Sampling Procedures');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getSamplingProcedures())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+
 
             if ( ! $submission->getIsMultipleClinicalStudy() ) {
 
@@ -1537,9 +1629,66 @@ class NewSubmissionController extends Controller
             }
             $revisions[] = $item;
 
-            $text = $translator->trans('Primary Outcome');
+            $text = $translator->trans('Dependent Variables');
             $item = array('text' => $text, 'status' => true);
             if(empty($submission->getPrimaryOutcome())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+
+            $text = $translator->trans('Independent Variables');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getSecondaryOutcome())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Data Collection Tools');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getDataCollectionTools())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Data Collection Procedure');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getDataCollectionProcedure())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Data Quality Assurance');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getDataQualityAssurance())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Data Management and Analysis');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getGeneralProcedures())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Ethical Considerations');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getEthicalConsiderations())) {
+                $item = array('text' => $text, 'status' => false);
+                $final_status = false;
+            }
+            $revisions[] = $item;
+
+            $text = $translator->trans('Limitations');
+            $item = array('text' => $text, 'status' => true);
+            if(empty($submission->getLimitations())) {
                 $item = array('text' => $text, 'status' => false);
                 $final_status = false;
             }

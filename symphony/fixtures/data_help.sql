@@ -46,6 +46,7 @@ REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VA
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (224,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'help','Indicate the PI and PAHO focal point. If not in this list, accounts must be created for them in ProEthos before proceeding. Other members of the research team may be entered manually.');
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (225,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Justify sample size');
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (226,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Limitations');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (300,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Study design');
 
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (200,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'mail','Dear investigator,\r\n\r\nPAHOERC has accepted this monitoring action as a notification. It will not be reviewed by the committee.\r\n\r\nProtocol <b>%protocol_code%</b>: %protocol_url%\r\n\r\nRegards,\r\nPAHOERC');
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (201,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'mail','Hello!\r\n\r\nA new monitoring action has been submitted.\r\n\r\nAccess the link below for more details.\r\n\r\nProtocol <b>%protocol_code%</b>: %protocol_url%\r\n\r\nRegards,\r\nPAHOERC');
@@ -68,3 +69,21 @@ REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VA
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (218,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'mail','Hello!\r\n\r\nA new comment has been submitted:\r\n\r\n"%comment%"\r\n\r\nAccess the link below for more details:\r\n\r\n%protocol_url%\r\n\r\nRegards,\r\nPAHOERC');
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (219,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'mail','Hello!\r\n\r\nA new protocol review has been submitted.\r\n\r\nAccess the link below for more details:\r\n\r\nProtocol <b>%protocol_code%</b>: %protocol_url%\r\n\r\nRegards,\r\nPAHOERC');
 REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (223,'2019-02-21 15:42:08','2019-02-21 15:42:08',1,'mail','Hello!\r\n\r\nThis is to remind you that protocol <b>%protocol_code%</b> has a pending monitoring action that is due on <b>%monitoring_date%</b>.\r\n\r\nPlease access your account in the system to present your monitoring action.\r\n\r\nRegards,\r\nPAHOERC');
+
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (300,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Study design');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (301,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Research Area and Period');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (302,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Health Condition or Problem Studied');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (303,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Study Subject');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (304,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Source Population');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (305,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Study Population');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (306,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Sample Size Calculations');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (307,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Sampling Techniques');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (308,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Sampling Procedures');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (309,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Dependent Variables');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (310,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Independent Variables');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (311,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Operational Definitions');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (312,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Data Collection Tools');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (313,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Data Collection Procedure');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (314,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Data Quality Assurance');
+REPLACE INTO `help` (`id`, `created`, `updated`, `status`, `type`, `message`) VALUES (315,'2016-06-16 14:11:29','2016-06-16 14:11:29',1,'help','Data Management and Analysis');
+

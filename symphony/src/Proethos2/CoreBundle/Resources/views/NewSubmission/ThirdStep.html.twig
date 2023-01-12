@@ -21,7 +21,7 @@
                 <div class='block'>
                     <div class='row'>
                         <div class="col-md-12">
-                            <h2 class='sub-header'>{% trans %}General description{% endtrans %}</h2>
+                            <h2 class='sub-header'>{% trans %}Methods{% endtrans %}</h2>
                         </div>
                     </div>
 
@@ -31,8 +31,20 @@
                         <div class="col-md-12">
                             <div class="form-group required">
                                 <label for="textarea-study-design">{% trans %}Study design{% endtrans %}</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 17} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 300} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control summernote" name='study-design' id='textarea-study-design'>{{ submission.studyDesign }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="anchor-textarea-research-area-and-period"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-research-area-and-period">{% trans %}Research Area and Period{% endtrans %}</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 301} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" name='research-area-and-period' id='textarea-research-area-and-period'>{{ submission.researchAreaAndPeriod }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -41,8 +53,91 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="textarea-health-condition">{% trans %}Health Condition or Problem Studied{% endtrans %}</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 18} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 302} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control summernote" name='health-condition' id='textarea-health-condition'>{{ submission.healthCondition }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='block'>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>{% trans %}Population{% endtrans %}</h2>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="select-study-subject">Study Subject</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 303} ) }}" data-toggle="modal" data-target="#modal-help">
+                                    <i class='glyphicon glyphicon-question-sign'></i></a>
+                                <select class='form-control' id='select-study-subject' name='study-subject' required>
+                                    <option value="">-</option>
+                                    <option {{ submission.studySubject=='children'?'selected':''}} value="children">Children</option>
+                                    <option {{ submission.studySubject=='prisoners'?'selected':''}} value="prisoners">Prisoners</option>
+                                    <option {{ submission.studySubject=='disabled individuals'?'selected':''}} value="disabled individuals">Disabled individuals</option>
+                                    <option {{ submission.studySubject=='pregnant women'?'selected':''}} value="pregnant women">Pregnant women</option>
+                                    <option {{ submission.studySubject=='economical disadvantage groups'?'selected':''}} value="economical disadvantage groups">Economical disadvantage groups</option>
+                                    <option {{ submission.studySubject=='old age'?'selected':''}} value="old age">Old age</option>
+                                    <option {{ submission.studySubject=='others'?'selected':''}} value="others">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-source-population">Source Population</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 304} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-source-population' name='source-population'>{{ submission.sourcePopulation }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-study-population">Study Population</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 305} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-study-population' name='study-population'>{{ submission.studyPopulation }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='block'>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>{% trans %}Sampling{% endtrans %}</h2>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-sample-size-calculation">Sample Size Calculations</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 306} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-sample-size-calculation' name='sample-size-calculation'>{{ submission.sampleSizeCalculation }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-sampling-techniques">Sampling Techniques</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 307} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-sampling-techniques' name='sampling-techniques'>{{ submission.samplingTechniques }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-sampling-procedures">Sampling Procedures</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 308} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-sampling-procedures' name='sampling-procedures'>{{ submission.samplingProcedures }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -276,7 +371,7 @@
                 <div class='block'>
                     <div class='row'>
                         <div class="col-md-12">
-                            <h2 class='sub-header'>{% trans %}Outcomes{% endtrans %}</h2>
+                            <h2 class='sub-header'>{% trans %}Variables{% endtrans %}</h2>
                         </div>
                     </div>
 
@@ -285,8 +380,8 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="form-group required">
-                                <label for="textarea-primary-outcome">{% trans %}Primary outcomes{% endtrans %}</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 28} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <label for="textarea-primary-outcome">{% trans %}Dependent Variables{% endtrans %}</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 309} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control summernote" id='textarea-primary-outcome' name='primary-outcome'>{{ submission.primaryOutcome }}</textarea>
                             </div>
                         </div>
@@ -294,44 +389,101 @@
 
                     <div class='row'>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="textarea-secondary-outcome">{% trans %}Secondary outcomes{% endtrans %}</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 29} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                            <div class="form-group required">
+                                <label for="textarea-secondary-outcome">{% trans %}Independent Variables{% endtrans %}</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 310} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control summernote" id='textarea-secondary-outcome' name='secondary-outcome'>{{ submission.secondaryOutcome }}</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class='block'>
                     <div class='row'>
                         <div class="col-md-12">
-                            <h2 class='sub-header'>{% trans %}Methodology{% endtrans %}</h2>
+                            <h2 class='sub-header'>{% trans %}Operational Definitions{% endtrans %}</h2>
                         </div>
                     </div>
 
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="textarea-general-procedures">{% trans %}General Procedures{% endtrans %}:</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 30} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                <textarea rows="4" class="form-control summernote" id='textarea-general-procedures' name='general-procedures'>{{ submission.generalProcedures }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class='row'>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="textarea-analysis-plan">{% trans %}Analysis Plan{% endtrans %}:</label>
-                                <a href="{{ path("crud_admin_help_show", {help_id: 31} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
-                                <textarea rows="4" class="form-control summernote" id='textarea-analysis-plan' name='analysis-plan'>{{ submission.analysisPlan }}</textarea>
+                                <label for="textarea-operational-definitions">{% trans %}Operational Definitions{% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 311} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-operational-definitions' name='operational-definitions'>{{ submission.operationalDefinitions }}</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class='block'>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>Data collection </h2>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-general-procedures">Data Collection Tools:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 312} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-data-collection-tools' name='data-collection-tools'>{{ submission.dataCollectionTools }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-data-collection-procedure">Data Collection Procedure:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 313} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-data-collection-procedure' name='data-collection-procedure'>{{ submission.dataCollectionProcedure }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='block'>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>{% trans %}Data Quality Assurance{% endtrans %}</h2>
+                        </div>
+                    </div>
+
+                    <div id="anchor-textarea-data-quality-assurance"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-data-quality-assurance">{% trans %}Data Quality Assurance{% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 314} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-data-quality-assurance' name='data-quality-assurance'>{{ submission.dataQualityAssurance }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='block'>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <h2 class='sub-header'>{% trans %}Data Management and Analysis{% endtrans %}</h2>
+                        </div>
+                    </div>
+
+                    <div id="anchor-textarea-general-procedures"></div>
+
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group required">
+                                <label for="textarea-general-procedures">{% trans %}Data Management and Analysis {% endtrans %}:</label>
+                                <a href="{{ path("crud_admin_help_show", {help_id: 315} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
+                                <textarea rows="4" class="form-control summernote" id='textarea-general-procedures' name='general-procedures'>{{ submission.generalProcedures }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class='block'>
                     <div class='row'>
                         <div class="col-md-12">
                             <h2 class='sub-header'>{% trans %}Ethical Considerations{% endtrans %}:</h2>
@@ -340,7 +492,7 @@
 
                     <div class='row'>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label for="textarea-ethical-considerations">{% trans %}Ethical Considerations{% endtrans %}:</label>
                                 <a href="{{ path("crud_admin_help_show", {help_id: 32} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control" id='textarea-ethical-considerations' name='ethical-considerations'>{{ submission.ethicalConsiderations }}</textarea>
@@ -350,7 +502,7 @@
 
                     <div class='row'>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label for="textarea-limitations">{% trans %}Limitations{% endtrans %}:</label>
                                 <a href="{{ path("crud_admin_help_show", {help_id: 226} ) }}" data-toggle="modal" data-target="#modal-help"><i class='glyphicon glyphicon-question-sign'></i></a>
                                 <textarea rows="4" class="form-control" id='textarea-limitations' name='limitations'>{{ submission.limitations }}</textarea>
@@ -694,11 +846,67 @@
                     return false;
                 }
 
+                if ( $('#textarea-research-area-and-period').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-research-area-and-period', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-source-population').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-source-population', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-study-population').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-study-population', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-sample-size-calculation').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-sample-size-calculation', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-sampling-techniques').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-sampling-techniques', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-sampling-procedures').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-sampling-procedures', 'sn');
+                    return false;
+                }
+
                 if ( $('#textarea-interventions').summernote('isEmpty') ) {
                     // cancel submit
                     e.preventDefault();
                     alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
                     highlight_input_field('#textarea-interventions', 'sn');
+                    return false;
+                }
+
+                if ( $('#textarea-data-quality-assurance').summernote('isEmpty') ) {
+                    // cancel submit
+                    e.preventDefault();
+                    alert('{% trans %}Notice: Please complete all required fields.{% endtrans %}');
+                    highlight_input_field('#textarea-data-quality-assurance', 'sn');
                     return false;
                 }
 
