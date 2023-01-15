@@ -2064,8 +2064,10 @@ class ProtocolController extends Controller
         $submission_upload = $submission_upload_repository->find($upload_id);
         $root_dir = $this->get('kernel')->getRootDir();
         $filepath = $root_dir.'/..'.$submission_upload->getUri();
-        $filename = end(explode('_', $submission_upload->getFilename(), 2));
+        $explode_filename = explode('_', $submission_upload->getFilename(), 2);
+        $filename = end($explode_filename);
         // $file_ext = strtolower(substr(strrchr($submission_upload->getFilename(), '.'), 1));
+//        die(var_dump( $filename));
 
         $response = new BinaryFileResponse($filepath);
         // Content-Disposition: DISPOSITION_INLINE (browser) or DISPOSITION_ATTACHMENT (download)
