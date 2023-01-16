@@ -456,9 +456,9 @@ class CRUDController extends Controller
         $protocol_checklist = $configuration_repository->findOneBy(array('key' => 'protocol.checklist'));
         $translations = $trans_repository->findTranslations($protocol_checklist);
 //        var_dump($translations);
-        $text = $translations[$locale];
 
-        if ( $text ) {
+        if ( count($translations)  >0 ) {
+            $text = $translations[$locale];
             $output['protocol_checklist'] = $text['value'];
         } else {
             $output['protocol_checklist'] = $protocol_checklist->getValue();
