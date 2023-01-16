@@ -35,8 +35,8 @@
     </head>
     <body>
         <h1>
-            {{ submission.scientificTitle }}
-            (<small>{% if submission.language == 'pt_BR' %}Português{% endif %}{% if submission.language == 'es_ES' %}Español{% endif %}{% if submission.language == 'en' %}English{% endif %}{% if submission.language == 'fr_FR' %}Français{% endif %}</small>)
+            {{ submission.publicTitle }}
+            {#(<small>{% if submission.language == 'pt_BR' %}Português{% endif %}{% if submission.language == 'es_ES' %}Español{% endif %}{% if submission.language == 'en' %}English{% endif %}{% if submission.language == 'fr_FR' %}Français{% endif %}</small>)#}
         </h1>
 
         {% if protocol_code %}
@@ -86,16 +86,28 @@
         <h2>{% trans %}Keywords{% endtrans %}</h2>
         <p>{{ submission.keywords }}</p>
 
-        <h2>{% trans %}Introduction{% endtrans %}</h2>
+        <h2>{% trans %}Introduction - Background{% endtrans %}</h2>
         <div>{{ submission.introduction|raw }}</div>
+
+        <h2>{% trans %}Statement of the Problem{% endtrans %}</h2>
+        <div>{{ submission.problemStatement|raw }}</div>
+
+        {% if submission.literatureReview %}
+            <h2>{% trans %}Literature Review{% endtrans %}</h2>
+            <div>{{ submission.literatureReview|raw }}</div>
+        {%  endif %}
 
         <h2>{% trans %}Justification{% endtrans %}</h2>
         <div>{{ submission.justification|raw }}</div>
 
-        <h2>{% trans %}Goals{% endtrans %}</h2>
-        <div>{{ submission.goals|raw }}</div>
+        <h2>Objectives</h2>
 
-        <h2>{% trans %}Is this a substudy of a larger project?{% endtrans %}</h2>
+        <h3>{% trans %}General Objective{% endtrans %}</h3>
+        <div>{{ submission.goals|raw }}</div>
+        <h3>{% trans %}Specific Objectives{% endtrans %}</h3>
+        <div>{{ submission.specificObjective|raw }}</div>
+
+        <h3>{% trans %}Is this a substudy of a larger project?{% endtrans %}</h3>
         <p>
             {% if submission.isSubstudy %}
                 {% trans %}yes{% endtrans %}
@@ -109,27 +121,53 @@
             <h2>{% trans %}Study Design{% endtrans %}</h2>
             <div>{{ submission.studyDesign|raw }}</div>
 
+            <h2>{% trans %}Research Area and Period{% endtrans %}</h2>
+            <div>{{ submission.researchAreaAndPeriod|raw }}</div>
+
             <h2>{% trans %}Health Condition or Problem Studied{% endtrans %}</h2>
             <div>{{ submission.healthCondition|raw }}</div>
 
+            <h2>Population</h2>
+
+            <h3>{% trans %}Study Subject{% endtrans %}</h3>
+            <div>{{ submission.studySubject|raw }}</div>
+
+            <h3>{% trans %}Source Population{% endtrans %}</h3>
+            <div>{{ submission.sourcePopulation|raw }}</div>
+
+            <h3>{% trans %}Study Population{% endtrans %}</h3>
+            <div>{{ submission.studyPopulation|raw }}</div>
+
+            <h2>Sampling</h2>
+
+            <h3>{% trans %}Sample Size Calculations{% endtrans %}</h3>
+            <div>{{ submission.sampleSizeCalculation|raw }}</div>
+
+            <h3>{% trans %}Sampling Techniques{% endtrans %}</h3>
+            <div>{{ submission.samplingTechniques|raw }}</div>
+
+            <h3>{% trans %}Sampling Procedures{% endtrans %}</h3>
+            <div>{{ submission.samplingProcedures|raw }}</div>
+
+
             {% if not submission.getIsMultipleClinicalStudy %}
 
-                <h2>{% trans %}Target sample size{% endtrans %}</h2>
+                <h3>{% trans %}Target sample size{% endtrans %}</h3>
                 <p>{{ submission.sampleSize }}</p>
 
-                <h2>{% trans %}Justify sample size{% endtrans %}</h2>
+                <h3>{% trans %}Justify sample size{% endtrans %}</h3>
                 <div>{{ submission.sampleSizeJustify|raw }}</div>
 
-                <h2>{% trans %}Inclusion criteria{% endtrans %}</h2>
+                <h3>{% trans %}Inclusion criteria{% endtrans %}</h3>
                 <div>{{ submission.inclusionCriteria|raw }}</div>
 
-                <h2>{% trans %}Exclusion criteria{% endtrans %}</h2>
+                <h3>{% trans %}Exclusion criteria{% endtrans %}</h3>
                 <div>{{ submission.exclusionCriteria|raw }}</div>
 
-                <h2>{% trans %}Estimated date of initial recruitment{% endtrans %}</h2>
+                <h3>{% trans %}Estimated date of initial recruitment{% endtrans %}</h3>
                 <p>{{ submission.recruitmentInitDate|date("d/m/Y") }}</p>
 
-                <h2>{% trans %}Recruitment Status{% endtrans %}</h2>
+                <h3>{% trans %}Recruitment Status{% endtrans %}</h3>
                 <p>{{ submission.recruitmentStatus }}</p>
 
             {% else %}
@@ -187,17 +225,28 @@
             <h2>{% trans %}Interventions{% endtrans %}</h2>
             <div>{{ submission.interventions|raw }}</div>
 
-            <h2>{% trans %}Primary outcomes{% endtrans %}</h2>
+            <h2>Variables</h2>
+
+            <h3>{% trans %}Dependent Variables{% endtrans %}</h3>
             <div>{{ submission.primaryOutcome|raw }}</div>
 
-            <h2>{% trans %}Secondary outcomes{% endtrans %}</h2>
+            <h3>{% trans %}Independent Variables{% endtrans %}</h3>
             <div>{{ submission.secondaryOutcome|raw }}</div>
 
-            <h2>{% trans %}General Procedures{% endtrans %}</h2>
-            <div>{{ submission.generalProcedures|raw }}</div>
+            <h2>{% trans %}Operational Definitions{% endtrans %}</h2>
+            <div>{{ submission.operationalDefinitions|raw }}</div>
 
-            <h2>{% trans %}Analysis Plan{% endtrans %}</h2>
-            <div>{{ submission.analysisPlan|raw }}</div>
+            <h2>{% trans %}Data Collection Tools{% endtrans %}</h2>
+            <div>{{ submission.dataCollectionTools|raw }}</div>
+
+            <h2>{% trans %}Data Collection Procedure{% endtrans %}</h2>
+            <div>{{ submission.dataCollectionProcedure|raw }}</div>
+
+            <h2>{% trans %}Data Quality Assurance{% endtrans %}</h2>
+            <div>{{ submission.dataQualityAssurance|raw }}</div>
+
+            <h2>{% trans %}Data Management and Analysis {% endtrans %}</h2>
+            <div>{{ submission.generalProcedures|raw }}</div>
 
             <h2>{% trans %}Ethical Considerations{% endtrans %}</h2>
             <div>{{ submission.ethicalConsiderations|raw }}</div>

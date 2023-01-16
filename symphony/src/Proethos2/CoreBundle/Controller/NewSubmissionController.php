@@ -147,6 +147,7 @@ class NewSubmissionController extends Controller
         // getting the current submission
         $submission = $submission_repository->find($submission_id);
         $output['submission'] = $submission;
+//        die(var_dump(!$submission->getCanBeEdited()));
 
         if (!$submission or !$submission->getCanBeEdited() or ($submission->getCanBeEdited() and !in_array('investigator', $user->getRolesSlug()))) {
             throw $this->createNotFoundException($translator->trans('No submission found'));
@@ -1755,14 +1756,13 @@ class NewSubmissionController extends Controller
                         );
 
                         $pdf = $this->get('knp_snappy.pdf');
-
-                        if ( version_compare(PHP_VERSION, '7.3.0') < 0 ) {
-                            // setting margins
-                            $pdf->getInternalGenerator()->setOption('margin-top', '50px');
-                            $pdf->getInternalGenerator()->setOption('margin-bottom', '50px');
-                            $pdf->getInternalGenerator()->setOption('margin-left', '20px');
-                            $pdf->getInternalGenerator()->setOption('margin-right', '20px');
-                        }
+//                        if ( version_compare(PHP_VERSION, '7.3.0') < 0 ) {
+//                            // setting margins
+//                            $pdf->getInternalGenerator()->setOption('margin-top', '50px');
+//                            $pdf->getInternalGenerator()->setOption('margin-bottom', '50px');
+//                            $pdf->getInternalGenerator()->setOption('margin-left', '20px');
+//                            $pdf->getInternalGenerator()->setOption('margin-right', '20px');
+//                        }
 
                         // adding pdf to tmp file
                         $filepath = "/tmp/" . date("Y-m-d-H\hi\ms\s") . "-submission.pdf";
@@ -2040,15 +2040,20 @@ class NewSubmissionController extends Controller
             $output
         );
 
+//        return new Response(
+//            $html,
+//            200
+//        );
+
         $pdf = $this->get('knp_snappy.pdf');
 
-        if ( version_compare(PHP_VERSION, '7.3.0') < 0 ) {
-            // setting margins
-            $pdf->getInternalGenerator()->setOption('margin-top', '50px');
-            $pdf->getInternalGenerator()->setOption('margin-bottom', '50px');
-            $pdf->getInternalGenerator()->setOption('margin-left', '20px');
-            $pdf->getInternalGenerator()->setOption('margin-right', '20px');
-        }
+//        if ( version_compare(PHP_VERSION, '7.3.0') < 0 ) {
+//            // setting margins
+//            $pdf->getInternalGenerator()->setOption('margin-top', '50px');
+//            $pdf->getInternalGenerator()->setOption('margin-bottom', '50px');
+//            $pdf->getInternalGenerator()->setOption('margin-left', '20px');
+//            $pdf->getInternalGenerator()->setOption('margin-right', '20px');
+//        }
 
         return new Response(
             $pdf->getOutputFromHtml($html),
